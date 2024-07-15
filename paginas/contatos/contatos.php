@@ -13,8 +13,8 @@
 </div>
 
 <div class="tabela">
-    
-<table class="table table-dark table-hover table-bordered">
+
+<table class="table table-dark table-hover table-bordered table-sm">
     <thead>
         <tr>
             <th>ID</th>
@@ -63,13 +63,13 @@
 
         ?>
             <tr>
-                <td><?= $dados["idContato"] ?></td>
-                <td><?= $dados["nomeContato"] ?></td>
-                <td><?= $dados["emailContato"] ?></td>
-                <td><?= $dados["telefoneContato"] ?></td>
-                <td><?= $dados["enderecoContato"] ?></td>
-                <td><?= $dados["sexoContato"] ?></td>
-                <td><?= $dados["dataNascContato"] ?></td>
+                <td class="text-nowrap"><?= $dados["idContato"] ?></td>
+                <td class="text-nowrap"><?= $dados["nomeContato"] ?></td>
+                <td class="text-nowrap"><?= $dados["emailContato"] ?></td>
+                <td class="text-nowrap"><?= $dados["telefoneContato"] ?></td>
+                <td class="text-nowrap"><?= $dados["enderecoContato"] ?></td>
+                <td class="text-nowrap"><?= $dados["sexoContato"] ?></td>
+                <td class="text-nowrap"><?= $dados["dataNascContato"] ?></td>
                 <td><a href="index.php?menuop=editar-contato&idContato=<?= $dados["idContato"] ?>">Editar</a></td>
                 <td><a href="index.php?menuop=excluir-contato&idContato=<?= $dados["idContato"] ?>">excluir</a></td>
             </tr>
@@ -80,18 +80,22 @@
     </tbody>
 </table>
 </div>
+
+<ul class="pagination justify-content-center">
 <?php
 
     $sqlTotal = "SELECT idContato FROM tbcontatos";
     $qrTotal = mysqli_query($conexao, $sqlTotal) or die (mysqli_error($conexao));
     $numTotal = mysqli_num_rows($qrTotal);
     $totalPagina = ceil($numTotal/$quantidade_registros);
-    echo "Total de Registros: $numTotal <br>"; 
-    echo '<a href="?menuop=contatos&pagina=1">Primeira Página</a>'; 
+
+    echo "<li class='page-item disabled'><span class='page-link'> Total de Registros: " . $numTotal . " </span></li>"; 
+
+    echo '<li class="page-item"><a class="page-link" href="?menuop=contatos&pagina=1">Primeira Página</a></li>'; 
     
     if($pagina>6){
         ?>
-        <a href="?menuop=contatos$pagina=<?php echo $pagina-1?>"> << </a>
+        <li class="page-item"> <a class="page-link" href="?menuop=contatos$pagina=<?php echo $pagina-1?>"> << </a></li>
 
         <?php
     }
@@ -99,20 +103,21 @@
     for($i=1;$i<=$totalPagina;$i++){
      if($i >= ($pagina-5) && $i <= ($pagina+5)){
         if ($i==$pagina) {
-            echo $i;
+            echo "<li class='page-item active'><span class='page-link'> $i </span></li>";
         }else {
-            echo "<a href=\"?menuop=contatos&pagina=$i\">$i</a> ";
+            echo "<li class='page-item'> <a class='page-link' href=\"?menuop=contatos&pagina=$i\">$i</a></li> ";
         }
      }
     }
 
     if($pagina<($totalPagina - 5)){
         ?>
-        <a href="?menuop=contatos$pagina=<?php echo $pagina-1?>"> << </a>
+        <li class="page-item"><a class="page-link" href="?menuop=contatos$pagina=<?php echo $pagina-1?>"> << </a></li>
 
         <?php
     }
 
-    echo "<a href=\"?menuop=contatos&pagina=$totalPagina\">Ultima Página</a>"; 
+        echo "<li class='psge-item'><a class='page-link' href=\"?menuop=contatos&pagina=$totalPagina\">Ultima Página</a></li>"; 
 
 ?>
+</ul>
