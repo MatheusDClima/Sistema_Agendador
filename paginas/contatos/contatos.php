@@ -2,13 +2,16 @@
     <h3>Contatos</h3>
 </header>
 <div>
-    <a href="index.php?menuop=cad-contato">Novo Contato</a>
+    <a class="btn btn-secondary mb-2" href="index.php?menuop=cad-contato">Novo Contato</a>
 </div>
 
 <div>
     <form action="index.php?menuop=contatos" method="post">
-        <input type="text" name="txt_pesquisa">
-        <input type="submit" value="Pesquisar">
+        <div class="input-group">
+
+            <input class="form-control" type="text" name="txt_pesquisa">
+            <button class="btn btn-success btn-sm" type="submit">Pesquisar</button>
+        </div>
     </form>
 </div>
 
