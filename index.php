@@ -3,6 +3,7 @@ include("db/conexao.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +12,13 @@ include("db/conexao.php");
     <link rel="stylesheet" href="css/estilo-padrao.css">
 
     <title>Sistema Agendador 1.0</title>
-    
+
 </head>
+
 <body>
     <header class="bg-dark">
         <div class="container">
-            
+
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="#">
                     <img src="img/logo_agendador.png" alt="Sistema Agendador" width="120">
@@ -26,8 +28,8 @@ include("db/conexao.php");
                 <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active"><a class="nav-link" href="index.php?menuop=home">Home</a> </li>
-                        <li class="nav-item"><a class="nav-link" href="index.php?menuop=contatos">Contatos</a>  </li>
-                        <li class="nav-item"><a class="nav-link" href="index.php?menuop=tarefas">Tarefas</a>  </li>
+                        <li class="nav-item"><a class="nav-link" href="index.php?menuop=contatos">Contatos</a> </li>
+                        <li class="nav-item"><a class="nav-link" href="index.php?menuop=tarefas">Tarefas</a> </li>
                         <li class="nav-item"><a class="nav-link" href="index.php?menuop=eventos">Eventos</a> </li>
                     </ul>
                 </div>
@@ -35,10 +37,10 @@ include("db/conexao.php");
         </div>
     </header>
     <main>
-    <div class="container">
-        <?php
-         
-            $menuop = (isset($_GET["menuop"]))? $_GET["menuop"]:"home";
+        <div class="container">
+            <?php
+
+            $menuop = (isset($_GET["menuop"])) ? $_GET["menuop"] : "home";
             switch ($menuop) {
                 case 'home':
                     include("paginas/home/home.php");
@@ -68,18 +70,24 @@ include("db/conexao.php");
                     include("paginas/eventos/eventos.php");
                     break;
                 default:
-                include("paginas/home/home.php");
+                    include("paginas/home/home.php");
                     break;
             }
-        ?>
-       </div>
+            ?>
+        </div>
     </main>
 
-            <footer class="container-fluid bg-dark">
-                <div class="text-center">Sistema Agendador V 1.0</div>
-            </footer>
+    <footer class="container-fluid bg-dark">
+        <div class="text-center">Sistema Agendador V 1.0</div>
+    </footer>
+
+    <script src = "./js/jquery.js"></script>
+    <script src = "./js/jquery.form.js"></script>
+    <script src = "./js/upload.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    </body>
+    <script src="./js/validation.js"></script>
+</body>
+
 </html>
